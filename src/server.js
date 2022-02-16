@@ -10,11 +10,14 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/User');
 const tweetRoutes = require('./routes/tweet');
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user')
+const methodOverride = require('method-override');
 
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 const sessionConfig = {
   secret: 'addbettersecrete',
@@ -41,6 +44,7 @@ app.set('views', path.join(__dirname, 'views'));
 // sample for express server
 app.use('/tweet', tweetRoutes);
 app.use('/auth', authRoutes);
+app.use('/user', userRoutes);
 
 app.use("/", (req, res, next) => {
   res.status(200).json({ success: true, data: "Welcome to twitter, hey twiteratis" });

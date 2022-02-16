@@ -1,6 +1,3 @@
-const register = (req, res) => {
-    //register api logic here
-};
 
 const follow = (req, res) => {
     //follow api logic here
@@ -23,7 +20,6 @@ const getTweetsForUser = (req, res) => {
 };
 
 const UserController = {
-    register,
     follow,
     getFollowers,
     getUserStats,

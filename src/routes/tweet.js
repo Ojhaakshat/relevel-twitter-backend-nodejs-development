@@ -4,16 +4,24 @@ const Tweet = require('../models/Tweet')
 const {isLoggedIn} = require('../middleware/isLoggedin')
 
 const TweetController = require('../controllers/tweet.controller');
+const User = require("../models/User");
 
 router.get('/', isLoggedIn, async(req, res) => {
+    const user = req.user;
     const tweets = await Tweet.find({});
-    res.render('tweet', {tweets});
+    res.render('tweet', {tweets, user});
 })
 router.post('/', async (req, res) => {
     const tweet = new Tweet(req.body.tweet);
     tweet.user_name = 'default',
     tweet.likes = 0;
     await tweet.save();
+    // // console.log(req.user);
+    // const user = User.findByIdAndUpdate(req.user._id, { "$push": { "tweets": tweet._id } },{ "new": true, "upsert": true });
+    // // console.log(user);
+    // console.log(user.tweets);
+    req.user.tweets.push(tweet._id);
+    req.user.save();
     res.redirect('/tweet');
 })
 

@@ -25,7 +25,7 @@ router.post('/login', passport.authenticate('local', { successRedirect: '/tweet'
 })
 //logout 
 router.get('/logout', (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     req.logOut();
     res.redirect('/');
 })
