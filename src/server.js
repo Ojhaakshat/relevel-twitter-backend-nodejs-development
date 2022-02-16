@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require('path');
 const app = express();
 const ejsMate = require('ejs-mate');
-
+const tweetRoutes = require('./routes/tweet');
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({extended: true}))
@@ -17,6 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 // sample for express server
+app.use('/tweet', tweetRoutes);
 app.use("/", (req, res, next) => {
   res.status(200).json({ success: true, data: "Start Here" });
 });

@@ -1,6 +1,6 @@
-// const tweet = (req, res) => {
-//     //tweet api logic here
-// };
+const tweet = (req, res) => {
+    //tweet api logic here
+};
 
 const postTweet = (req, res) => {
 
