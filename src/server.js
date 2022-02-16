@@ -59,7 +59,7 @@ db.once("open", () => {
     console.log("Database connected");
 })
 
-const PORT = process.env.PORT || 8080; // port at which server listening
+const PORT = process.env.PORT || 3000; // port at which server listening
 
 app.listen(
   PORT,

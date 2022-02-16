@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+</head>
+<body>
+    <% for(let user in users) {%> 
+        <% if(curuser._id.toString() != users[user]._id.toString()) {%> 
+            <%= users[user].username %> 
+            <% let x = 0 %> 
+            <% for(let person in curuser.following) { %> 
+                <% if(curuser.following[person].toString() === users[user]._id.toString()) { %> 
+                    <% x = 1%>
+                <% } %> 
+            <% } %> 
+            <% if(x==1) { %> 
+                <form action="/user/unfollow/<%= curuser._id %>/<%= users[user]._id %>?_method='DELETE" method="post">
+                    <button>Unfollow</button>
+                </form>
+            <% } else { %> 
+                <form action="/user/follow/<%= curuser._id %>/<%= users[user]._id %>" method="post">
+                    <button>Follow</button>
+                </form>
+            <% } %>      
+        <% } %> 
+                        
+    <% } %>  
+    <button><a href="/tweet">Back to all tweets</a></button>
+</body>
+</html>

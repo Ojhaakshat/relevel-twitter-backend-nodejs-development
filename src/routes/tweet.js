@@ -13,8 +13,8 @@ router.get('/', isLoggedIn, async(req, res) => {
 })
 router.post('/', async (req, res) => {
     const tweet = new Tweet(req.body.tweet);
-    tweet.user_name = 'default',
     tweet.likes = 0;
+    tweet.username = req.user.username;
     await tweet.save();
     // // console.log(req.user);
     // const user = User.findByIdAndUpdate(req.user._id, { "$push": { "tweets": tweet._id } },{ "new": true, "upsert": true });

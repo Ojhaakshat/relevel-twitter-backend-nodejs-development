@@ -7,6 +7,18 @@
     <title>Profile</title>
 </head>
 <body>
-    
+    <h1><%= user.usernamae %></h1> 
+    <h4><%= user.name %></h4> 
+    <h4>Followers: <%= user.followers.length %></h4> 
+    <h4>Following: <%= user.following.length %></h4> 
+
+    <% for(let tweet_id in user.tweets) { %>  
+        <% for(let tweet in tweets) {%>
+            <% if(user.tweets[tweet_id].toString() == tweets[tweet]._id.toString()) { %>  
+                <h3><%= tweets[tweet].body %></h3>
+                <h3>Likes : <%= tweets[tweet].likes %></h3>
+            <% } %>
+        <% } %>
+    <% } %> 
 </body>
 </html>

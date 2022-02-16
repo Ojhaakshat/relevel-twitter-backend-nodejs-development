@@ -20,7 +20,6 @@ const userSchema = new Schema({
     name: {
         type: String,
         required: true,
-        unique: true
     },
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
     following: [{ type: Schema.Types.ObjectId, ref: "User" }],
