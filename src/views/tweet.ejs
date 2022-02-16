@@ -17,5 +17,9 @@
 
         <button>Add Tweet</button>
     </form>
+    <% for (let tweet of tweets) {%>
+        <h3><%= tweet.user_name %> <%= tweet.body %> <%= tweet.likes %> </h3>
+    <% } %> 
+
 </body>
 </html>

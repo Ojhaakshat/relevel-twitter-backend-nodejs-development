@@ -6,14 +6,14 @@ const TweetController = require('../controllers/tweet.controller');
 
 router.get('/', async(req, res) => {
     const tweets = await Tweet.find({});
-    res.render('tweet');
+    res.render('tweet', {tweets});
 })
 router.post('/', async (req, res) => {
     const tweet = new Tweet(req.body.tweet);
     tweet.user_name = 'default',
     tweet.likes = 0;
     await tweet.save();
-    res.redirect('/');
+    res.redirect('/tweet');
 })
 
 

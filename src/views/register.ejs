@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form action="/auth/register" method="POST">
+        <div class="">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+                <!-- <div class="valid-feedback">
+                    Looks good!
+                </div> -->
+        </div>
+        <div class="">
+            <label  for="email">Email</label>
+            <input  type="email" id="email" name="email" required>
+            <!-- <div class="valid-feedback">
+                Looks good!
+            </div> -->
+        </div>
+        <div class="">
+            <label  for="name">Name</label>
+            <input  type="text" id="name" name="name" required>
+            <!-- <div class="valid-feedback">
+                Looks good!
+            </div> -->
+        </div>
+        <div class="">
+            <label  for="password">Password</label>
+            <input  type="password" id="password" name="password" required>
+            <!-- <div class="valid-feedback">
+                Looks good!
+            </div> -->
+        </div>
+        <button class="btn btn-success">Register</button>
+    </form>
+</body>
+</html>
