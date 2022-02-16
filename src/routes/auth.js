@@ -11,6 +11,7 @@ router.get('/register', (req,res) => {
 router.post('/register', async (req,res) => {
     const {email, username, password, name} = req.body;
     const user = new User({username, email, name});
+    user.following.push(user._id);
     const newuser = await User.register(user, password);
     console.log("dnfajksnfsa");
     // console.log(newuser);

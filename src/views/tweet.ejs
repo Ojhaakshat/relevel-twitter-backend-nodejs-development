@@ -22,15 +22,28 @@
         <% const jiskofollowkiauskiid = user.following[person]; %>
         <% let jiskofollowkiauskausername = ''; %>
         <%  for(let u in users) { %>
-            <%  if(users[u]._id.toString() == jiskofollowkiauskiid.toString() || users[u]._id.toString() === user._id.toString()) { %>
-                <% jiskofollowkiauskausername = users[u].username; %>        
+            <%  if(users[u]._id.toString() == jiskofollowkiauskiid.toString()) { %>
+                <% jiskofollowkiauskausername = users[u].username; %>    
             <%}%>
         <%}%>
-
+        <% let myusername = '' %>  
+        <% for(let u in users) {%>
+            <% if(user._id.toString() == users[u]._id.toString()) {%>
+                <% myusername = users[u].username %>
+                <% break %> 
+            <% } %> 
+        <% } %> 
+        
         <% for(let tweet in tweets) {%>
             <% if(tweets[tweet].username === jiskofollowkiauskausername) {%>
                 <%= tweets[tweet].body %> 
              <%  } %>
+             <% if(tweets[tweet].username === myusername) {%>
+                 
+                <form action="/user/<%= tweets[tweet]._id%>?_method=DELETE" method="post"><button>Delete</button></form>    
+            <% } %>  
+            <% console.log(tweets[tweet].username) %> 
+            
         <%  } %>
         
     <% } %>   
@@ -39,6 +52,6 @@
         <button><a href="/user/<%= user._id %>">My profile</a></button>
         <button><a href="/user/all/<%= user._id %>">All users</a></button>     
     <% } %> 
-        
+
 </body>
 </html>
