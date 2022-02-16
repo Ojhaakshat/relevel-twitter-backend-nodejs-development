@@ -17,15 +17,28 @@
 
         <button>Add Tweet</button>
     </form>
-    <% for (let tweet of tweets) {%>
-        <h3><%= tweet.username %> <%= tweet.body %> <%= tweet.likes %> </h3>
-        <form action="/user/<%= tweet._id%>?_method=DELETE" method="post"><button>Delete</button></form>
+    
+    <% for(let person in user.following) {%>
+        <% const jiskofollowkiauskiid = user.following[person]; %>
+        <% let jiskofollowkiauskausername = ''; %>
+        <%  for(let u in users) { %>
+            <%  if(users[u]._id.toString() == jiskofollowkiauskiid.toString() || users[u]._id.toString() === user._id.toString()) { %>
+                <% jiskofollowkiauskausername = users[u].username; %>        
+            <%}%>
+        <%}%>
+
+        <% for(let tweet in tweets) {%>
+            <% if(tweets[tweet].username === jiskofollowkiauskausername) {%>
+                <%= tweets[tweet].body %> 
+             <%  } %>
+        <%  } %>
         
-    <% } %> 
+    <% } %>   
+    
     <% if(user) {%> 
         <button><a href="/user/<%= user._id %>">My profile</a></button>
         <button><a href="/user/all/<%= user._id %>">All users</a></button>     
     <% } %> 
-
+        
 </body>
 </html>

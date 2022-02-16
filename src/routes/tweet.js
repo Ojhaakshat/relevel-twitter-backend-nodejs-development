@@ -9,7 +9,8 @@ const User = require("../models/User");
 router.get('/', isLoggedIn, async(req, res) => {
     const user = req.user;
     const tweets = await Tweet.find({});
-    res.render('tweet', {tweets, user});
+    const users = await User.find({});
+    res.render('tweet', {tweets, users, user});
 })
 router.post('/', async (req, res) => {
     const tweet = new Tweet(req.body.tweet);
