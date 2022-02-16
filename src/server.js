@@ -43,7 +43,7 @@ app.use('/tweet', tweetRoutes);
 app.use('/auth', authRoutes);
 
 app.use("/", (req, res, next) => {
-  res.status(200).json({ success: true, data: "Start Here" });
+  res.status(200).json({ success: true, data: "Welcome to twitter, hey twiteratis" });
 });
 
 const mongoose = require('mongoose');

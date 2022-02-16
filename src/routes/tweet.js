@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Tweet = require('../models/Tweet')
+const {isLoggedIn} = require('../middleware/isLoggedin')
 
 const TweetController = require('../controllers/tweet.controller');
 
-router.get('/', async(req, res) => {
+router.get('/', isLoggedIn, async(req, res) => {
     const tweets = await Tweet.find({});
     res.render('tweet', {tweets});
 })
