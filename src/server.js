@@ -66,9 +66,3 @@ app.listen(
   console.log(`server started in ${process.env.NODE_ENV} mode at port ${PORT}`)
 );
 
-// fetch routes
-let userRouter = require('./routes/user');
-
-//define root routes.
-app.use('/user', userRouter);
-

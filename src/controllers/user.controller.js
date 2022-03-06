@@ -48,12 +48,28 @@ const deleteTweet = async(req, res) => {
     res.redirect('/tweet');
 }
 
+const getFollowing = async (req, res) => {
+    const user = User.findById(req.params.curuserId);
+    const following = user.following;
+    res.send(following);
+}
+
+const getFollowers = async (req, res) => {
+    const user = User.findById(req.params.curuserId);
+    const followers = user.followers;
+    res.send(followers);
+}
+
+
 const UserController = {
     follow,
     unfollow,
     getUserStats,
     searchUsers,
-    deleteTweet
+    deleteTweet,
+    getFollowing,
+    getFollowers
+
 };
 
 module.exports = UserController;

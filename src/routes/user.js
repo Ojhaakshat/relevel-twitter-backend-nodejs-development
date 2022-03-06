@@ -17,6 +17,9 @@ router.route('/follow/:curuserId/:userId').post(UserController.follow);
 
 router.route('/unfollow/:curuserId/:userId').post(UserController.unfollow);
 
+router.route('/followers/:curuserId').get(UserController.getFollowers)
+router.route('/following/:curuserId').get(UserController.getFollowing)
+
 
 // Create routes for user here
 module.exports = router;
