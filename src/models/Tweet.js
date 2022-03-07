@@ -12,7 +12,12 @@ const tweetSchema = new Schema({
     },
     likes: {
         type: Number
-    }
+    },
+    date: {
+        type: Date,
+        default: Date.now(),
+    },
+
 })
 
 module.exports = mongoose.model('Tweet', tweetSchema);
